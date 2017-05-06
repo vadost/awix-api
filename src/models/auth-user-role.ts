@@ -11,7 +11,7 @@ export interface IAuthUserRoleInstance extends Instance<IAuthUserRoleAttributes>
   createdAt: Date;
 }
 
-export const authUserRoleModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
+const authUserRoleModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
   return sequelize.define('AuthUserRole', {
     userUuid: {
       type: dataTypes.UUID,
@@ -41,3 +41,5 @@ export const authUserRoleModel = (sequelize: Sequelize, dataTypes: DataTypes) =>
     },
   });
 };
+
+export default authUserRoleModel;

@@ -11,7 +11,7 @@ export interface IAuthRoleInstance extends Instance<IAuthRoleAttributes> {
   updatedAt: Date;
 }
 
-export const authRoleModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
+const authRoleModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
   return sequelize.define('AuthRole', {
     name: {
       type: dataTypes.STRING,
@@ -22,3 +22,5 @@ export const authRoleModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
     },
   });
 };
+
+export default authRoleModel;

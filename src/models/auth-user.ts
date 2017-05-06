@@ -17,7 +17,7 @@ export interface IAuthUserInstance extends Instance<IAuthUserAttributes> {
   updatedAt: Date;
 }
 
-export const authUserModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
+const authUserModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
   return sequelize.define('AuthUser', {
     uuid: {
       type: dataTypes.UUID,
@@ -58,3 +58,5 @@ export const authUserModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
     },
   });
 };
+
+export default authUserModel;
