@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "node"
+branches:
+  only:
+    - master
+    - development
+install:
+  - npm install
+script:
+  - npm run-script lint
+after_success:
+  - "curl -u deploy:$DEPLOY_PASSWORD https://deploy.awix.io/deploy/$TRAVIS_BRANCH"

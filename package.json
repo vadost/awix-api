@@ -1,0 +1,41 @@
+{
+  "name": "awix-api",
+  "version": "0.0.1",
+  "description": "Backend for AWIX project",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "prestart": "npm run build",
+    "start": "node dist/app.js",
+    "prestart:dev": "npm run build",
+    "start:dev": "concurrently --kill-others \"tsc -w\" \"nodemon dist/app.js\"",
+    "lint": "tslint -p tsconfig.json --type-check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misticwonder/awix-api.git"
+  },
+  "author": "Andrey Korovin",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "jsonwebtoken": "^7.3.0",
+    "pg": "^6.1.5",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.30.4"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.3",
+    "@types/express": "^4.0.35",
+    "@types/jsonwebtoken": "^7.2.0",
+    "@types/pg": "^6.1.39",
+    "@types/sequelize": "^4.0.51",
+    "concurrently": "^3.4.0",
+    "nodemon": "^1.11.0",
+    "sequelize-cli": "^2.7.0",
+    "tslint": "^5.0.0",
+    "typescript": "^2.2.2"
+  }
+}
