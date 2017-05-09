@@ -10,4 +10,4 @@ install:
 script:
   - npm run-script lint
 after_success:
-  - "curl -u deploy:$DEPLOY_PASSWORD https://deploy.awix.io/deploy/$TRAVIS_BRANCH"
+  - "curl -u deploy:$DEPLOY_PASSWORD https://deploy.awix.io/deploy/api/$TRAVIS_BRANCH"

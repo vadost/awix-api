@@ -3,36 +3,38 @@ import { generateLoginToken } from '../helpers/generate-login-token';
 import { IAuthUserAttributes, IAuthUserInstance } from '../models/auth-user';
 import { IDbConnection } from '../models/index';
 
-class UsersController {
-  public getUsersAction(req: Request, res: Response, next: NextFunction) {
+export const usersController = {
+  getUsersAction: (req: Request, res: Response, next: NextFunction): void => {
     const models: IDbConnection = req.app.get('models');
 
-    return models.AuthUser
+    models.AuthUser
       .all()
       .then((authUsers: IAuthUserInstance[]) => res.status(200).json(authUsers))
       .catch((error: any) => res.status(400).json(error));
-  }
+  },
 
-  public getUserAction(req: Request, res: Response, next: NextFunction) {
+  getUserAction: (req: Request, res: Response, next: NextFunction): void => {
     const models: IDbConnection = req.app.get('models');
 
-    return models.AuthUser
+    models.AuthUser
       .findByPrimary(req.params.uuid)
       .then((authUser: IAuthUserInstance) => res.status(200).json(authUser))
       .catch((error: any) => res.status(400).json(error));
-  }
+  },
 
-  public createUserAction(req: Request, res: Response, next: NextFunction) {
+  createUserAction: (req: Request, res: Response, next: NextFunction): void => {
     if (typeof req.body.email === 'undefined') {
-      return res.status(400).json({
+      res.status(400).json({
         message: 'No email provided.',
       });
+      return;
     }
 
     if (typeof req.body.password === 'undefined') {
-      return res.status(400).json({
+      res.status(400).json({
         message: 'No password provided.',
       });
+      return;
     }
 
     const models: IDbConnection = req.app.get('models');
@@ -43,11 +45,9 @@ class UsersController {
       password: req.body.password,
     };
 
-    return models.AuthUser
+    models.AuthUser
       .create(newAuthUser)
       .then((authUser: IAuthUserInstance) => res.status(201).json(authUser))
       .catch((error: any) => res.status(400).json(error));
-  }
-}
-
-export const usersController = new UsersController();
+  },
+};

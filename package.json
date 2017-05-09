@@ -5,11 +5,11 @@
   "main": "dist/app.js",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "prestart": "npm run build",
+    "migrate": "sequelize db:migrate",
     "start": "node dist/app.js",
     "prestart:dev": "npm run build",
     "start:dev": "concurrently --kill-others \"tsc -w\" \"nodemon dist/app.js\"",
-    "lint": "tslint -p tsconfig.json --type-check"
+    "lint": "tslint -p tsconfig.json"
   },
   "repository": {
     "type": "git",

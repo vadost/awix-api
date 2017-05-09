@@ -5,14 +5,30 @@ import { ITokenData } from '../middlewares/jwt-auth';
 import { IAuthUserInstance } from '../models/auth-user';
 import { IDbConnection } from '../models/index';
 
-class AuthenticateController {
+const sendAuthData = (res: Response, authUser: IAuthUserInstance, config: IConfig): void => {
+  const tokenData: ITokenData = {
+    uuid: authUser.uuid,
+  };
+
+  const token: string = sign(tokenData, config.jwt.secret, {
+    expiresIn: config.jwt.tokenTime,
+  });
+
+  res.json({
+    message: 'Authentication succeeded.',
+    loginToken: authUser.loginToken,
+    token,
+  });
+};
+
+export const authenticateController = {
   /**
    * Authenticate
    * post
    * req.body.email
    * req.body.password
    */
-  public authenticateAction(req: Request, res: Response, next: NextFunction): void {
+  authenticateAction: (req: Request, res: Response, next: NextFunction): void => {
     if (!req.body.email) {
       res.status(401).json({
         message: 'No email provided.',
@@ -45,18 +61,18 @@ class AuthenticateController {
             message: 'Authentication failed. Wrong password.',
           });
         } else {
-          this.sendAuthData(res, authUser, config);
+          sendAuthData(res, authUser, config);
         }
       })
       .catch((error: any) => res.status(400).json(error));
-  }
+  },
 
   /**
    * Authenticate token
    * post
    * req.body.loginToken
    */
-  public authenticateTokenAction(req: Request, res: Response, next: NextFunction): void {
+  authenticateTokenAction: (req: Request, res: Response, next: NextFunction): void => {
     if (!req.body.loginToken) {
       res.status(401).json({
         message: 'No loginToken provided.',
@@ -77,26 +93,8 @@ class AuthenticateController {
           return;
         }
 
-        this.sendAuthData(res, authUser, config);
+        sendAuthData(res, authUser, config);
       })
       .catch((error: any) => res.status(400).json(error));
-  }
-
-  private sendAuthData(res: Response, authUser: IAuthUserInstance, config: IConfig): void {
-    const tokenData: ITokenData = {
-      uuid: authUser.uuid,
-    };
-
-    const token: string = sign(tokenData, config.jwt.secret, {
-      expiresIn: config.jwt.tokenTime,
-    });
-
-    res.json({
-      message: 'Authentication succeeded.',
-      loginToken: authUser.loginToken,
-      token,
-    });
-  }
-}
-
-export const authenticateController = new AuthenticateController();
+  },
+};
