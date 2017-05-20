@@ -5,9 +5,10 @@
   "main": "dist/app.js",
   "scripts": {
     "build": "rm -rf dist && tsc",
+    "sync": "node dist/models/sync.js",
     "migrate": "sequelize db:migrate",
     "start": "node dist/app.js",
-    "prestart:dev": "npm run build",
+    "prestart:dev": "npm run build && npm run sync",
     "start:dev": "concurrently --kill-others \"tsc -w\" \"nodemon dist/app.js\"",
     "lint": "tslint -p tsconfig.json"
   },

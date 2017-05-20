@@ -5,12 +5,12 @@ import { config } from '../configs/config';
 
 import { IAuthRoleAttributes, IAuthRoleInstance } from './auth-role';
 import { IAuthUserAttributes, IAuthUserInstance } from './auth-user';
-import { IAuthUserRoleAttributes, IAuthUserRoleInstance } from './auth-user-role';
 
 export interface IDbConnection {
   AuthUser: Sequelize.Model<IAuthUserInstance, IAuthUserAttributes>;
   AuthRole: Sequelize.Model<IAuthRoleInstance, IAuthRoleAttributes>;
-  AuthUserRole: Sequelize.Model<IAuthUserRoleInstance, IAuthUserRoleAttributes>;
+
+  sequelize: any;
 }
 
 const env = process.env.NODE_ENV || 'development';
@@ -20,7 +20,12 @@ const db: any = {};
 
 fs
   .readdirSync(__dirname)
-  .filter((file) => (file.indexOf('.') !== 0) && (file !== path.basename(module.filename)) && (file.slice(-3) === '.js'))
+  .filter((file) => (
+    (file.indexOf('.') !== 0)
+    && (file !== path.basename(module.filename))
+    && (file !== 'sync.js')
+    && (file.slice(-3) === '.js')
+  ))
   .forEach((file) => {
     const model: any = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
@@ -31,5 +36,7 @@ Object.keys(db).forEach((modelName) => {
     db[modelName].associate(db);
   }
 });
+
+db.sequelize = sequelize;
 
 export const models: IDbConnection = db;

@@ -1,7 +1,7 @@
 import { DataTypes, QueryInterface } from 'sequelize';
 
 export const up = (queryInterface: QueryInterface, dataTypes: DataTypes) => {
-  return queryInterface.createTable('AuthUsers', {
+  /*return queryInterface.createTable('AuthUsers', {
     uuid: {
       type: dataTypes.UUID,
       primaryKey: true,
@@ -31,9 +31,9 @@ export const up = (queryInterface: QueryInterface, dataTypes: DataTypes) => {
       type: dataTypes.DATE,
       allowNull: false,
     },
-  });
+  });*/
 };
 
 export const down = (queryInterface: QueryInterface, dataTypes: DataTypes) => {
-  return queryInterface.dropTable('AuthUsers');
+  // return queryInterface.dropTable('AuthUsers');
 };

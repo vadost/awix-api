@@ -5,6 +5,7 @@ export const config: IConfig = {
     secret: '123456',
     tokenTime: '30m',
   },
+
   sequelize: {
     development: {
       username: 'postgres',

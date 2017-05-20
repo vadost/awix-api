@@ -5,7 +5,15 @@ import { ITokenData } from '../middlewares/jwt-auth';
 import { IAuthUserInstance } from '../models/auth-user';
 import { IDbConnection } from '../models/index';
 
+const updateLastVisit = (authUser: IAuthUserInstance): void => {
+  authUser.update({
+    lastVisit: new Date(),
+  });
+};
+
 const sendAuthData = (res: Response, authUser: IAuthUserInstance, config: IConfig): void => {
+  updateLastVisit(authUser);
+
   const tokenData: ITokenData = {
     uuid: authUser.uuid,
   };
@@ -15,9 +23,10 @@ const sendAuthData = (res: Response, authUser: IAuthUserInstance, config: IConfi
   });
 
   res.json({
-    message: 'Authentication succeeded.',
-    loginToken: authUser.loginToken,
-    token,
+    data: {
+      loginToken: authUser.loginToken,
+      token,
+    },
   });
 };
 
@@ -31,14 +40,14 @@ export const authenticateController = {
   authenticateAction: (req: Request, res: Response, next: NextFunction): void => {
     if (!req.body.email) {
       res.status(401).json({
-        message: 'No email provided.',
+        error: 'No email provided.',
       });
       return;
     }
 
     if (!req.body.password) {
       res.status(401).json({
-        message: 'No password provided.',
+        error: 'No password provided.',
       });
       return;
     }
@@ -51,14 +60,14 @@ export const authenticateController = {
       .then((authUser: IAuthUserInstance) => {
         if (!authUser) {
           res.status(401).json({
-            message: 'Authentication failed. User not found.',
+            error: 'Authentication failed. User not found.',
           });
           return;
         }
 
         if (authUser.password !== req.body.password) {
           res.status(401).json({
-            message: 'Authentication failed. Wrong password.',
+            error: 'Authentication failed. Wrong password.',
           });
         } else {
           sendAuthData(res, authUser, config);
@@ -75,7 +84,7 @@ export const authenticateController = {
   authenticateTokenAction: (req: Request, res: Response, next: NextFunction): void => {
     if (!req.body.loginToken) {
       res.status(401).json({
-        message: 'No loginToken provided.',
+        error: 'No loginToken provided.',
       });
       return;
     }
@@ -88,7 +97,7 @@ export const authenticateController = {
       .then((authUser: IAuthUserInstance) => {
         if (!authUser) {
           res.status(401).json({
-            message: 'Authentication failed. User not found.',
+            error: 'Authentication failed. User not found.',
           });
           return;
         }

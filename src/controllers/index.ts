@@ -1,14 +1,15 @@
 import { Router } from 'express';
+import { jwtAuth } from '../middlewares/jwt-auth';
 import { authenticateController } from './authenticate';
 import { usersController } from './users';
 
 const router: Router = Router();
 
+// PUBLIC
 router.post('/authenticate', authenticateController.authenticateAction);
 router.post('/authenticate/token', authenticateController.authenticateTokenAction);
 
-router.get('/users', usersController.getUsersAction);
-router.get('/users/:uuid', usersController.getUserAction);
-router.post('/users', usersController.createUserAction);
+// PROTECTED
+router.get('/users/me', jwtAuth, usersController.getMeAction);
 
 export const routing: Router = router;

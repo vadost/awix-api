@@ -1,4 +1,5 @@
 import { DataTypes, Instance, Sequelize } from 'sequelize';
+import { IDbConnection } from './index';
 
 export interface IAuthUserAttributes {
   email: string;
@@ -18,7 +19,7 @@ export interface IAuthUserInstance extends Instance<IAuthUserAttributes> {
 }
 
 const authUserModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
-  return sequelize.define('AuthUser', {
+  const AuthUser = sequelize.define('AuthUser', {
     uuid: {
       type: dataTypes.UUID,
       primaryKey: true,
@@ -56,7 +57,18 @@ const authUserModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
         isDate: true,
       },
     },
+  }, {
+    classMethods: {
+      associate: (models: IDbConnection) => {
+        AuthUser.belongsToMany(models.AuthRole, {
+          through: 'AuthUserRoles',
+          onDelete: 'CASCADE',
+        });
+      },
+    },
   });
+
+  return AuthUser;
 };
 
 export default authUserModel;

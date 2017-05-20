@@ -1,4 +1,5 @@
 import { DataTypes, Instance, Sequelize } from 'sequelize';
+import { IDbConnection } from './index';
 
 export interface IAuthRoleAttributes {
   name: string;
@@ -12,7 +13,7 @@ export interface IAuthRoleInstance extends Instance<IAuthRoleAttributes> {
 }
 
 const authRoleModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
-  return sequelize.define('AuthRole', {
+  const AuthRole = sequelize.define('AuthRole', {
     name: {
       type: dataTypes.STRING,
       allowNull: false,
@@ -20,7 +21,18 @@ const authRoleModel = (sequelize: Sequelize, dataTypes: DataTypes) => {
         len: [1, 255],
       },
     },
+  }, {
+    classMethods: {
+      associate: (models: IDbConnection) => {
+        AuthRole.belongsToMany(models.AuthUser, {
+          through: 'AuthUserRoles',
+          onDelete: 'CASCADE',
+        });
+      },
+    },
   });
+
+  return AuthRole;
 };
 
 export default authRoleModel;

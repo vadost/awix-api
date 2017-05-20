@@ -15,7 +15,7 @@ app.use(routing);
 
 app.all('*', (req: express.Request, res: express.Response, next: express.NextFunction): void => {
   res.status(404).json({
-    message: 'Route not found.',
+    error: 'Route not found.',
   });
 });
 
