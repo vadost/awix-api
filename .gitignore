@@ -2,4 +2,5 @@
 /.idea
 npm-debug.log
 /dist
+/dist-spec
 /src/configs/config.ts

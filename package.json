@@ -10,6 +10,7 @@
     "start": "node dist/app.js",
     "prestart:dev": "npm run build && npm run sync",
     "start:dev": "concurrently --kill-others \"tsc -w\" \"nodemon dist/app.js\"",
+    "test": "rm -rf dist-spec && tsc -p tsconfig.spec.json && jasmine JASMINE_CONFIG_PATH=jasmine.json",
     "lint": "tslint -p tsconfig.json"
   },
   "repository": {
@@ -30,10 +31,12 @@
   "devDependencies": {
     "@types/body-parser": "^1.16.3",
     "@types/express": "^4.0.35",
+    "@types/jasmine": "^2.5.47",
     "@types/jsonwebtoken": "^7.2.0",
     "@types/pg": "^6.1.39",
     "@types/sequelize": "^4.0.51",
     "concurrently": "^3.4.0",
+    "jasmine": "^2.6.0",
     "nodemon": "^1.11.0",
     "sequelize-cli": "^2.7.0",
     "tslint": "^5.0.0",
