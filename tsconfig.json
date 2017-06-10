@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "module": "commonjs",
-    "outDir": "dist",
+    "outDir": "./dist",
     "sourceMap": true,
     "alwaysStrict": true,
     "noImplicitAny": true,
@@ -10,11 +10,5 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "strictNullChecks": true
-  },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "**/*.spec.ts"
-  ]
+  }
 }

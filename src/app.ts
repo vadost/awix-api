@@ -1,4 +1,5 @@
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
 import * as express from 'express';
 import { config } from './configs/config';
 import { routing } from './controllers/index';
@@ -10,6 +11,7 @@ const port: number = process.env.PORT || 3000;
 app.set('config', config);
 app.set('models', models);
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(routing);
 
@@ -24,5 +26,6 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
 });
 
 app.listen(port, (): void => {
-  console.log(`Listening on port ${port}`);
+  const env = process.env.NODE_ENV || 'development';
+  console.log(`Listening on port ${port}, env "${env}"`);
 });

@@ -2,18 +2,20 @@ module.exports = function(wallaby) {
   return {
     files: [
       'src/**/*.ts',
-      '!src/migrations/**/*.ts',
-      '!src/**/*.spec.ts'
+      '!src/**/*.spec.ts',
+      'e2e/**/*.ts',
+      '!e2e/**/*.e2e-spec.ts',
+    ],
+    filesWithNoCoverageCalculated: [
+      'e2e/**/*.ts',
     ],
     tests: [
-      'src/**/*.spec.ts'
+      'src/**/*.spec.ts',
+      'e2e/**/*.e2e-spec.ts',
     ],
-    compilers: {
-      '**/*.ts': wallaby.compilers.typeScript({target: 'es5'})
-    },
     env: {
-      type: 'node'
+      type: 'node',
     },
-    testFramework: 'jasmine'
+    testFramework: 'jasmine',
   };
 };
