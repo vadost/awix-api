@@ -1,12 +1,14 @@
 FROM node:latest
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /dock
 
-COPY package.json /usr/src/app/
+COPY package.json ./
 RUN npm install
 
-COPY . /usr/src/app
+COPY . ./
+RUN npm run build
+RUN npm run sync
+RUN npm run migrate
 
-EXPOSE 3000
-CMD ["npm", "run", "start:development"]
+EXPOSE 80
+CMD ["npm", "start"]
