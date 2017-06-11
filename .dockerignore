@@ -1,7 +1,13 @@
-/.idea
-/node_modules
-/dist
+.idea
+.git
 npm-debug.log
 
-.git
+dist
+e2e
+node_modules
+.editorconfig
 .gitignore
+.travis.yml
+README.md
+tslint.json
+wallaby.js
