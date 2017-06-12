@@ -1,13 +1,12 @@
 sudo: required
 services:
   - docker
-
 language: node_js
 node_js:
   - "node"
 branches:
   only:
-    - master
+    - production
     - development
 install:
   - npm install
@@ -15,6 +14,6 @@ script:
   - npm run-script lint
   - npm run-script build
 after_success:
-  - docker build -t misticwonder/api-$TRAVIS_BRANCH .
+  - docker build -t misticwonder/awix-api-$TRAVIS_BRANCH .
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  - docker push $DOCKER_USERNAME/api-$TRAVIS_BRANCH;
+  - docker push $DOCKER_USERNAME/awix-api-$TRAVIS_BRANCH;

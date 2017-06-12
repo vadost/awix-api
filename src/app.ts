@@ -6,7 +6,7 @@ import { routing } from './controllers/index';
 import { models } from './models/index';
 
 const app: express.Application = express();
-const port: number = process.env.PORT || 3000;
+const env = process.env.NODE_ENV;
 
 app.set('config', config);
 app.set('models', models);
@@ -25,7 +25,6 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
   res.status(500).json(err);
 });
 
-app.listen(port, (): void => {
-  const env = process.env.NODE_ENV || 'development';
-  console.log(`Listening on port ${port}, env "${env}"`);
+app.listen(80, (): void => {
+  console.log(`App started in "${env}" mode`);
 });

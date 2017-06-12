@@ -9,4 +9,4 @@ COPY . ./
 RUN npm run build
 
 EXPOSE 80
-CMD npm run sync && npm run migrate && npm start
+CMD sleep 15 && npm run sync && npm run migrate && npm start

@@ -2,30 +2,23 @@ import { IConfig } from './types/i-config.interface';
 
 export const config: IConfig = {
   jwt: {
-    secret: '123456',
+    secret: process.env.SECRET,
     tokenTime: '30m',
   },
 
   sequelize: {
     production: {
-      username: 'postgres',
-      password: 'postgres',
-      database: 'postgres_production',
-      host: '127.0.0.1',
-      dialect: 'postgres',
-    },
-    development: {
-      username: 'postgres',
-      password: 'postgres',
-      database: 'postgres',
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: 'awix_production',
       host: 'postgres',
       dialect: 'postgres',
     },
-    testing: {
-      username: 'postgres',
-      password: 'postgres',
-      database: 'postgres_testing',
-      host: '127.0.0.1',
+    development: {
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: 'awix_development',
+      host: 'postgres',
       dialect: 'postgres',
     },
   },
