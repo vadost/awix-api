@@ -9,8 +9,8 @@
     "sync": "node dist/app/models/sync.js",
     "migrate": "sequelize db:migrate",
     "start": "node dist/app/app.js",
-    "predev": "npm run build && npm run sync && npm run migrate",
-    "dev": "concurrently --kill-others \"tsc -w -p src/tsconfig.app.json\" \"nodemon dist/app/app.js\"",
+    "predevelop": "npm run clean && npm run build && npm run sync",
+    "develop": "concurrently --kill-others \"tsc -w -p src/tsconfig.app.json\" \"nodemon dist/app/app.js\"",
     "lint": "tslint -p tsconfig.json",
     "test": "rm -rf dist/spec && tsc -p src/tsconfig.spec.json && jasmine --config=src/jasmine.spec.json",
     "e2etest": "rm -rf dist/e2e && tsc -p e2e/tsconfig.e2e.json && jasmine --config=e2e/jasmine.e2e.json"

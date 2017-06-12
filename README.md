@@ -6,8 +6,6 @@ set JavaScript version to "ECMAScript 6"
 enable node
 enable tslint
 install and enable wallaby.js
-src/configs/config.ts 
-create dbs
 
 ## Sequelize
 ./node_modules/.bin/sequelize model:create --name User --attributes email:string
