@@ -6,7 +6,7 @@ import { routing } from './controllers/index';
 import { models } from './models/index';
 
 const app: express.Application = express();
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV || 'development';
 
 app.set('config', config);
 app.set('models', models);

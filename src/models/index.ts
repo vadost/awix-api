@@ -13,7 +13,7 @@ export interface IDbConnection {
   sequelize: any;
 }
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV || 'development';
 const configSequelize = config.sequelize[env];
 const sequelize = new Sequelize(configSequelize.database, configSequelize.username, configSequelize.password, configSequelize);
 const db: any = {};
