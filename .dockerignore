@@ -1,13 +1,12 @@
 .idea
-.git
-npm-debug.log
-
 dist
 e2e
 node_modules
 .editorconfig
+.git
 .gitignore
 .travis.yml
 README.md
 tslint.json
 wallaby.js
+npm-debug.log
