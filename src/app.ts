@@ -25,6 +25,6 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
   res.status(500).json(err);
 });
 
-app.listen(80, (): void => {
+app.listen(3000, (): void => {
   console.log(`App started in "${env}" mode`);
 });
