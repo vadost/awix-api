@@ -6,6 +6,7 @@ set JavaScript version to "ECMAScript 6"
 enable node
 enable tslint
 install and enable wallaby.js
+cd ./tools && docker-compose up -d
 
 ## Sequelize
 ./node_modules/.bin/sequelize model:create --name User --attributes email:string
