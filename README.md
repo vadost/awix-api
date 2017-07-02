@@ -8,9 +8,7 @@ enable tslint
 install and enable wallaby.js
 
 ## Sequelize
-./node_modules/.bin/sequelize model:create --name User --attributes email:string
-./node_modules/.bin/sequelize db:migrate
-./node_modules/.bin/sequelize db:migrate:undo
+https://github.com/sequelize/cli
 
 ## PostgreSQL
 sudo apt-get install postgresql

@@ -9,4 +9,4 @@ COPY . ./
 RUN npm run build
 
 EXPOSE 3000
-CMD sleep 20 && npm run sync && npm start
+CMD sleep 20 && npm run sync && npm run seed && npm start

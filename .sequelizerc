@@ -2,11 +2,11 @@ const path = require('path');
 const fs = require("fs");
 const config = require('./dist/app/configs/config');
 
-fs.writeFileSync('./dist/sequelize.json', JSON.stringify(config.config.sequelize), 'utf8');
+fs.writeFileSync('./dist/orm/sequelize.json', JSON.stringify(config.config.sequelize), 'utf8');
 
 module.exports = {
-  "config": path.resolve('./dist/sequelize.json'),
+  "config": path.resolve('./dist/orm/sequelize.json'),
   "models-path": path.resolve('./dist/app/models'),
-  "seeders-path": path.resolve('./dist/seeders'),
-  "migrations-path": path.resolve('./dist/migrations')
+  "seeders-path": path.resolve('./dist/orm/seeders'),
+  "migrations-path": path.resolve('./dist/orm/migrations')
 };
