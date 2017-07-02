@@ -1,6 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../dist/orm"
+    "outDir": "../dist/orm",
+    "rootDir": "./"
   }
 }
