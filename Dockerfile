@@ -8,5 +8,5 @@ RUN npm install
 COPY . ./
 RUN npm run build
 
-EXPOSE 80
-CMD sleep 15 && npm run sync && npm start
+EXPOSE 3000
+CMD sleep 20 && npm run sync && npm start

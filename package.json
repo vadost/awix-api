@@ -4,7 +4,7 @@
   "description": "api",
   "main": "dist/app/app.js",
   "scripts": {
-    "clean": "rm -rf dist/app && rm -rf dist/migrations",
+    "clean": "rm -rf dist/app && rm -rf dist/migrations && rm -f dist/sequelize.json",
     "build": "tsc -p src/tsconfig.app.json && tsc -p migrations/tsconfig.migrations.json",
     "sync": "node dist/app/models/sync.js",
     "migrate": "sequelize db:migrate",
