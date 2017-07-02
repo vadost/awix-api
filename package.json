@@ -20,29 +20,29 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "body-parser": "^1.17.1",
+    "body-parser": "^1.17.2",
     "cors": "^2.8.3",
-    "express": "^4.15.2",
-    "jsonwebtoken": "^7.3.0",
-    "pg": "^6.1.5",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "pg": "^6.4.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.30.4"
   },
   "devDependencies": {
-    "@types/body-parser": "^1.16.3",
+    "@types/body-parser": "^1.16.4",
     "@types/cors": "^2.8.1",
-    "@types/express": "^4.0.35",
-    "@types/jasmine": "^2.5.47",
-    "@types/jsonwebtoken": "^7.2.0",
-    "@types/pg": "^6.1.39",
-    "@types/request": "0.0.43",
-    "@types/sequelize": "^4.0.51",
-    "concurrently": "^3.4.0",
+    "@types/express": "^4.0.36",
+    "@types/jasmine": "^2.5.53",
+    "@types/jsonwebtoken": "^7.2.1",
+    "@types/pg": "^6.1.41",
+    "@types/request": "0.0.45",
+    "@types/sequelize": "^4.0.62",
+    "concurrently": "^3.5.0",
     "jasmine": "^2.6.0",
     "nodemon": "^1.11.0",
     "request": "^2.81.0",
     "sequelize-cli": "^2.7.0",
-    "tslint": "^5.0.0",
-    "typescript": "^2.2.2"
+    "tslint": "^5.4.3",
+    "typescript": "^2.4.1"
   }
 }
