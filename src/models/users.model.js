@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 module.exports = function (app) {
   const sequelizeClient = app.get('sequelizeClient');
   const users = sequelizeClient.define('users', {
-  
+
     email: {
       type: Sequelize.STRING,
       allowNull: true,
@@ -15,8 +15,8 @@ module.exports = function (app) {
       type: Sequelize.STRING,
       allowNull: true
     },
-  
-  
+
+
   }, {
     hooks: {
       beforeCount(options) {
