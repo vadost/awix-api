@@ -1,31 +1,22 @@
 {
   "name": "awix-api",
-  "description": "",
+  "description": "api",
   "version": "0.0.0",
-  "homepage": "",
   "main": "src",
-  "keywords": [
-    "feathers"
-  ],
+  "license": "UNLICENSED",
+  "private": true,
   "author": {
     "name": "Andrey Korovin",
     "email": "misticwonder@gmail.com"
   },
-  "contributors": [],
-  "bugs": {},
-  "directories": {
-    "lib": "src",
-    "test": "test/"
-  },
   "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
+    "node": ">= 8.1.0",
+    "npm": ">= 5.3.0"
   },
   "scripts": {
-    "test": "npm run eslint && npm run mocha",
-    "eslint": "eslint src/. test/. --config .eslintrc.json",
-    "start": "node src/",
-    "mocha": "mocha test/ --recursive"
+    "lint": "eslint src/. test/. --config .eslintrc.json",
+    "test": "mocha test/ --recursive",
+    "start": "node src/"
   },
   "dependencies": {
     "body-parser": "^1.17.2",

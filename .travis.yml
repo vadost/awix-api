@@ -11,9 +11,9 @@ branches:
 install:
   - npm install
 script:
+  - npm run-script lint
   - npm run-script test
 after_success:
   - docker build -t $DOCKER_USERNAME/awix-api-$TRAVIS_BRANCH .
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker images
   - docker push $DOCKER_USERNAME/awix-api-$TRAVIS_BRANCH
