@@ -22,11 +22,10 @@
     "npm": ">= 3.0.0"
   },
   "scripts": {
-    "test": "npm run eslint && npm run mocha",
-    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "lint": "eslint src/. test/. --config .eslintrc.json",
+    "test": "mocha test/ --recursive",
     "start": "node src/",
-    "dev": "nodemon src/",
-    "mocha": "mocha test/ --recursive"
+    "dev": "nodemon src/"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
