@@ -2,8 +2,9 @@ const Sequelize = require('sequelize');
 
 module.exports = function () {
   const app = this;
-  const connectionString = app.get('postgres');
-  const sequelize = new Sequelize(connectionString, {
+  const database = app.get('postgres');
+  const sequelize = new Sequelize(database, process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
+    host: process.env.POSTGRES_HOST,
     dialect: 'postgres',
     logging: false,
     define: {
