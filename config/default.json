@@ -6,5 +6,29 @@
     "default": 10,
     "max": 50
   },
-  "postgres": "awix_development"
+  "postgres": "postgres://postgres1941:postgres1941@178.62.33.39:5432/awix_development",
+  "authentication": {
+    "secret": "3c91351c506dcc899e5effc8dce75d61b0ac030bc86e10fb3d5835238f81dfde7573ca866cef7c1965f70e5c6c619728c4af6353ceb794a6700fc38a925d42416db53f17047c44369703e865cea0f731854bc9709a4e33f128b3df0992a005e90bf028933c820197499de3618ef4e962a3fd9cba7ce64821479a9d65846439abc339e8c99ecbe71ed1be584fb86a545902e9657c4acf41a334f9e88fe03ea9d570d5bf964c49a9eeca4071097e82fa79c0b16f35ca9d6b207c0feef0d7aaaef4e144ff65d7c633fcfdf7c496bf2aaea1901b5070153af420f390e7e33308e4f82d167d781c3ceace60357fb8331e5934be789ddf40ee6d72338152be3ebe72e0",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "type": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  }
 }

@@ -1,3 +1,3 @@
 {
-  "postgres": "awix_production"
+  "postgres": "postgres://postgres1941:postgres1941@postgres:5432/awix_production"
 }
