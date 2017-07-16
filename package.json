@@ -1,48 +1,51 @@
 {
-  "name": "api",
-  "version": "0.0.1",
-  "description": "api",
-  "main": "dist/app/app.js",
-  "scripts": {
-    "clean": "rm -rf dist",
-    "build": "tsc -p src/tsconfig.app.json && tsc -p orm/tsconfig.orm.json",
-    "sync": "node dist/app/models/sync.js",
-    "migrate": "sequelize db:migrate",
-    "seed": "sequelize db:seed:all",
-    "start": "node dist/app/app.js",
-    "predevelop": "npm run clean && npm run build && npm run sync && npm run seed",
-    "develop": "concurrently --kill-others \"tsc -w -p src/tsconfig.app.json\" \"cd ./dist/app && nodemon app.js\"",
-    "lint": "tslint -p tsconfig.json",
-    "test": "rm -rf dist/spec && tsc -p src/tsconfig.spec.json && jasmine --config=src/jasmine.spec.json",
-    "e2etest": "rm -rf dist/e2e && tsc -p e2e/tsconfig.e2e.json && jasmine --config=e2e/jasmine.e2e.json"
+  "name": "awix-api",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "Andrey Korovin",
+    "email": "misticwonder@gmail.com"
   },
-  "author": "Andrey Korovin",
-  "license": "UNLICENSED",
-  "private": true,
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "start": "node src/",
+    "mocha": "mocha test/ --recursive"
+  },
   "dependencies": {
     "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
     "cors": "^2.8.3",
-    "express": "^4.15.3",
-    "jsonwebtoken": "^7.4.1",
-    "pg": "^6.4.0",
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^3.30.4"
+    "feathers": "^2.1.4",
+    "feathers-configuration": "^0.4.1",
+    "feathers-errors": "^2.8.2",
+    "feathers-hooks": "^2.0.2",
+    "feathers-hooks-common": "^3.5.5",
+    "feathers-rest": "^1.8.0",
+    "feathers-socketio": "^2.0.0",
+    "helmet": "^3.6.1",
+    "serve-favicon": "^2.4.3",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
-    "@types/body-parser": "^1.16.4",
-    "@types/cors": "^2.8.1",
-    "@types/express": "^4.0.36",
-    "@types/jasmine": "^2.5.53",
-    "@types/jsonwebtoken": "^7.2.1",
-    "@types/pg": "^6.1.41",
-    "@types/request": "0.0.45",
-    "@types/sequelize": "^4.0.62",
-    "concurrently": "^3.5.0",
-    "jasmine": "^2.6.0",
-    "nodemon": "^1.11.0",
+    "eslint": "^4.1.1",
+    "mocha": "^3.4.2",
     "request": "^2.81.0",
-    "sequelize-cli": "^2.7.0",
-    "tslint": "^5.4.3",
-    "typescript": "^2.4.1"
+    "request-promise": "^4.2.1"
   }
 }
